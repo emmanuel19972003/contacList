@@ -1,0 +1,6 @@
+framework module Pods_contactListTests {
+  umbrella header "Pods-contactListTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
