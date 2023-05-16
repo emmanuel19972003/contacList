@@ -9,7 +9,6 @@ import UIKit
 
 protocol ContactListRouterProtocol {
     func getContactList() -> UIViewController
-    func getContactListAsTap() -> UIViewController
 }
 //vip
 class ContactListRouter: ContactListRouterProtocol {
@@ -30,11 +29,4 @@ class ContactListRouter: ContactListRouterProtocol {
         
         return view
     }
-    
-    func getContactListAsTap() -> UIViewController {
-        let view = getContactList()
-        view.title = "contact"
-        return view
-    }
-    
 }
