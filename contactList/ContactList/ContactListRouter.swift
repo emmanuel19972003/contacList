@@ -7,17 +7,14 @@
 
 import UIKit
 
-typealias EnetryPoint = ContactListViewProtocol & UIViewController
-
 protocol ContactListRouterProtocol {
-    static func getContactList() -> ContactListRouterProtocol
-    var entry: EnetryPoint? {get set}
+    func getContactList() -> UIViewController
+    func getContactListAsTap() -> UIViewController
 }
 //vip
 class ContactListRouter: ContactListRouterProtocol {
-    var entry: EnetryPoint?
     
-    static func getContactList() -> ContactListRouterProtocol {
+    func getContactList() -> UIViewController {
         
         let router = ContactListRouter()
         let presenter = ContactListPresenter()
@@ -31,8 +28,13 @@ class ContactListRouter: ContactListRouterProtocol {
         presenter.interactor = interactor
         presenter.router = router
         
-        router.entry = view as? EnetryPoint
-        
-        return router
+        return view
     }
+    
+    func getContactListAsTap() -> UIViewController {
+        let view = getContactList()
+        view.title = "contact"
+        return view
+    }
+    
 }
