@@ -40,21 +40,29 @@ class TapBarRouter: TapBarRouterProtocol {
         
         return router
     }
-    
+}
+
+extension TapBarRouter {
     func setUpTapBar() {
+        
         let tapBarController = UITabBarController()
         tapBarController.tabBar.isTranslucent = false
+        
         let view1 = ejemplo()
-        view1.title = "La uno"
+        view1.title = "Favorites"
         
-        let view2 = ejemplo2()
-        view2.title = "La dos"
+        let contactsViewController = ContactListRouter().getContactList()
+        contactsViewController.title = "Contacts"
+    
         
-        let view3 = ContactListRouter().getContactList()
-        view3.title = "Contact"
+        tapBarController.setViewControllers([view1, contactsViewController], animated: false)
         
-        tapBarController.setViewControllers([view1, view2, view3], animated: false)
-        tapBarController.tabBar.items?[0].image = UIImage(systemName: "house.circle")
+        tapBarController.tabBar.items?[0].image = UIImage(systemName: "star")
+        tapBarController.tabBar.items?[0].selectedImage = UIImage(systemName: "star.fill")
+        
+        tapBarController.tabBar.items?[1].image = UIImage(systemName: "person.crop.circle")
+        tapBarController.tabBar.items?[1].selectedImage = UIImage(systemName: "person.crop.circle.fill")
+        
         tapBarController.modalPresentationStyle = .fullScreen
         view?.present(tapBarController, animated: false)
     }
