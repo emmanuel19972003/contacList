@@ -12,3 +12,10 @@ enum ContactListType {
     case main
     case addFavorite
 }
+
+struct ContactInfo {
+    var name: String
+    var number: String
+    var image: String? = ""
+    var direcction: String? = ""
+}

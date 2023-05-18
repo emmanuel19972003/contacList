@@ -21,6 +21,8 @@ class ContactListView: UIViewController, ContactListViewProtocol {
     
     let seachBar = SearchBar()
     
+    var data: [ContactInfo]?
+    
     lazy private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -122,18 +124,19 @@ extension ContactListView: UITableViewDelegate, UITableViewDataSource {
             cell.delegate = self
         }
         cell.selectionStyle = .none
-//        cell.layoutIfNeeded()
-//        cell.updateConstraintsIfNeeded()
         return cell
     }
 }
 
 extension ContactListView: ContactsListTableViewCellProtocol {
-    func reloadCell(index: Int?) {
-        guard let index = index else { return }
-        let indexPaths = [index].map({ IndexPath(row: $0, section: 0) })
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.tableView.performBatchUpdates(nil)
-        }
+    func reloadCell() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, animations: {
+            [weak self] in
+                self?.tableView.performBatchUpdates(nil)
+        })
+    }
+    
+    func editContactTaped() {
+        print("nos vamos al eddit")
     }
 }

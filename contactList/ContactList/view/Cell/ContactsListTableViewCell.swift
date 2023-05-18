@@ -8,7 +8,8 @@
 import UIKit
 
 protocol ContactsListTableViewCellProtocol {
-    func reloadCell(index: Int?)
+    func reloadCell()
+    func editContactTaped()
 }
 
 class ContactsListTableViewCell: UITableViewCell {
@@ -25,7 +26,11 @@ class ContactsListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var viewHolder: UIView!
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel! {
+        didSet {
+            nameLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
+        }
+    }
     
     @IBOutlet weak var arrowImage: UIImageView! {
         didSet {
@@ -46,20 +51,30 @@ class ContactsListTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionStackView: UIStackView! {
         didSet {
             descriptionStackView.isHidden = true
+            descriptionStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(descriptionStackViewTaped)))
         }
     }
     
     @IBOutlet weak var descriptionTitleLabel: UILabel! {
         didSet {
-            descriptionStackView.isHidden = true
-            descriptionTitleLabel.text = "Number"
+            descriptionTitleLabel.isHidden = true
+            descriptionTitleLabel.text = "Number: "
         }
     }
     
     @IBOutlet weak var descriptionLabel: UILabel! {
         didSet {
             descriptionLabel.isHidden = true
-            descriptionLabel.text = "Emma pero en descripcion"
+        }
+    }
+    
+    
+    @IBOutlet weak var editArrow: UIImageView! {
+        didSet {
+            editArrow.isHidden = true
+            editArrow.contentMode = .scaleAspectFit
+            editArrow.image = UIImage(systemName: "chevron.forward.circle")
+            editArrow.tintColor = .systemBlue
         }
     }
     
@@ -83,8 +98,13 @@ class ContactsListTableViewCell: UITableViewCell {
         descriptionTitleLabel.isHidden.toggle()
         descriptionLabel.isHidden.toggle()
         arrowImage.rotateWithAnimation(descriptionStackView.isHidden)
-        delegate?.reloadCell(index: cellrow)
+        editArrow.isHidden.toggle()
+        delegate?.reloadCell()
         
+    }
+    
+    @objc func descriptionStackViewTaped() {
+        delegate?.editContactTaped()
     }
     
 }
