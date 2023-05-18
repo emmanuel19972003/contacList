@@ -43,6 +43,14 @@ class HeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setTitle(with title: String) {
+        titleLabel.text = title
+    }
+    
+    func setImage(with image: String) {
+        iconImageView.image = UIImage(systemName: image)
+    }
+    
     private func setupView(){
         setUpTitleLabel()
         setUpIconImageView()

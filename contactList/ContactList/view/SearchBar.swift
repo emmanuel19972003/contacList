@@ -7,27 +7,62 @@
 
 import UIKit
 
-class contactList: UIView {
-    lazy var stackHorizontalView: UIStackView = {
+class SearchBar: UIView {
+    
+    lazy private var stackHorizontalView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = .systemGray6
-        stackView.layer.cornerRadius = 10
+        stackView.backgroundColor = .systemGray5
+        stackView.layer.cornerRadius = 15
         stackView.axis = .horizontal
         stackView.alignment = .leading
+        stackView.spacing = 5
         return stackView
     }()
     
-    lazy var magnifyingGlassImage: UIImageView = {
+    lazy private var magnifyingGlassImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "magnifyingglass")
+        image.image = UIImage(systemName: ContactListStrings.magnifyingglass)
         image.contentMode = .scaleAspectFit
         image.tintColor = .systemGray
         return image
     }()
     
-    lazy var inputText: UITextField = {
+    lazy private var inputText: UITextField = {
         let text = UITextField()
-        text.placeholder = "Buscar"
-        return inputText
+        text.placeholder = ContactListStrings.search
+        return text
     }()
+    
+    init() {
+        super.init(frame: .zero)
+        setUpView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUpView() {
+        self.fillViewWith(stackHorizontalView)
+        setUpMagnifyingGlassImage()
+        setUpInputText()
+    }
+    
+    private func setUpMagnifyingGlassImage() {
+        magnifyingGlassImage.translatesAutoresizingMaskIntoConstraints = false
+        stackHorizontalView.addArrangedSubview(magnifyingGlassImage)
+        NSLayoutConstraint.activate([
+            magnifyingGlassImage.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            magnifyingGlassImage.heightAnchor.constraint(equalToConstant: 25),
+            magnifyingGlassImage.widthAnchor.constraint(equalTo: magnifyingGlassImage.heightAnchor)
+        ])
+    }
+    
+    private func setUpInputText() {
+        inputText.translatesAutoresizingMaskIntoConstraints = false
+        stackHorizontalView.addArrangedSubview(inputText)
+        NSLayoutConstraint.activate([
+            inputText.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+        ])
+    }
 }

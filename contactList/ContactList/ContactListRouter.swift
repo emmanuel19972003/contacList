@@ -8,16 +8,16 @@
 import UIKit
 
 protocol ContactListRouterProtocol {
-    func getContactList() -> UIViewController
+    func getContactList(type: ContactListType) -> UIViewController
 }
 //vip
 class ContactListRouter: ContactListRouterProtocol {
     
-    func getContactList() -> UIViewController {
+    func getContactList(type: ContactListType) -> UIViewController {
         
         let router = ContactListRouter()
         let presenter = ContactListPresenter()
-        let view = ContactListView()
+        let view = ContactListView(contactLisType: type)
         let interactor = ContactListInteractor()
         
         view.presenter = presenter

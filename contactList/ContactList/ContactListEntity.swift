@@ -7,3 +7,8 @@
 
 import Foundation
 
+enum ContactListType {
+    case favorite
+    case main
+    case addFavorite
+}

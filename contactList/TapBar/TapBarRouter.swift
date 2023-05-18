@@ -51,7 +51,7 @@ extension TapBarRouter {
         let view1 = ejemplo()
         view1.title = "Favorites"
         
-        let contactsViewController = ContactListRouter().getContactList()
+        let contactsViewController = ContactListRouter().getContactList(type: .favorite)
         contactsViewController.title = "Contacts"
     
         
