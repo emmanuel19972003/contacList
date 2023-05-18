@@ -48,20 +48,20 @@ extension TapBarRouter {
         let tapBarController = UITabBarController()
         tapBarController.tabBar.isTranslucent = false
         
-        let view1 = ejemplo()
-        view1.title = "Favorites"
+        let favoriteContactsViewController = ContactListRouter().getContactList(type: .favorite)
+        favoriteContactsViewController.title = TapBarStrings.favorite
         
-        let contactsViewController = ContactListRouter().getContactList(type: .favorite)
-        contactsViewController.title = "Contacts"
+        let contactsViewController = ContactListRouter().getContactList(type: .main)
+        contactsViewController.title = TapBarStrings.contacts
     
         
-        tapBarController.setViewControllers([view1, contactsViewController], animated: false)
+        tapBarController.setViewControllers([favoriteContactsViewController, contactsViewController], animated: false)
         
-        tapBarController.tabBar.items?[0].image = UIImage(systemName: "star")
-        tapBarController.tabBar.items?[0].selectedImage = UIImage(systemName: "star.fill")
+        tapBarController.tabBar.items?[0].image = UIImage(systemName: TapBarStrings.starImage)
+        tapBarController.tabBar.items?[0].selectedImage = UIImage(systemName: TapBarStrings.starFillImage)
         
-        tapBarController.tabBar.items?[1].image = UIImage(systemName: "person.crop.circle")
-        tapBarController.tabBar.items?[1].selectedImage = UIImage(systemName: "person.crop.circle.fill")
+        tapBarController.tabBar.items?[1].image = UIImage(systemName: TapBarStrings.contactsImage)
+        tapBarController.tabBar.items?[1].selectedImage = UIImage(systemName: TapBarStrings.contactsFillImage)
         
         tapBarController.modalPresentationStyle = .fullScreen
         view?.present(tapBarController, animated: false)

@@ -21,5 +21,11 @@ extension UIView {
         view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leading).isActive = true
         view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailing).isActive = true
     }
+    
+    func rotateWithAnimation(_ rotate: Bool) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.transform = CGAffineTransform(rotationAngle: rotate ? 0 : .pi)
+        })
+    }
 
 }

@@ -12,7 +12,7 @@ class SearchBar: UIView {
     lazy private var stackHorizontalView: UIStackView = {
         let stackView = UIStackView()
         stackView.backgroundColor = .systemGray5
-        stackView.layer.cornerRadius = 15
+        stackView.layer.cornerRadius = 12
         stackView.axis = .horizontal
         stackView.alignment = .leading
         stackView.spacing = 5
@@ -54,7 +54,8 @@ class SearchBar: UIView {
         NSLayoutConstraint.activate([
             magnifyingGlassImage.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             magnifyingGlassImage.heightAnchor.constraint(equalToConstant: 25),
-            magnifyingGlassImage.widthAnchor.constraint(equalTo: magnifyingGlassImage.heightAnchor)
+            magnifyingGlassImage.widthAnchor.constraint(equalTo: magnifyingGlassImage.heightAnchor),
+            magnifyingGlassImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
         ])
     }
     
@@ -63,6 +64,7 @@ class SearchBar: UIView {
         stackHorizontalView.addArrangedSubview(inputText)
         NSLayoutConstraint.activate([
             inputText.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            inputText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
         ])
     }
 }

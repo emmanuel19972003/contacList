@@ -32,10 +32,8 @@ class HeaderView: UIView {
         return image
     }()
     
-    init(title: String, iconImage: String) {
+    init(title: String? = nil, iconImage: String? = nil) {
         super.init(frame: .zero)
-        titleLabel.text = title
-        iconImageView.image = UIImage(systemName: iconImage)
         setupView()
     }
     
