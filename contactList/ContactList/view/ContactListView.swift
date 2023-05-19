@@ -9,6 +9,8 @@ import UIKit
 
 protocol ContactListViewProtocol {
     var presenter: ContactListPresenterProtocol? {get set}
+    
+    func updateData(data: [ContactInfo])
 }
 
 class ContactListView: UIViewController, ContactListViewProtocol {
@@ -33,9 +35,10 @@ class ContactListView: UIViewController, ContactListViewProtocol {
     }()
     
     init(contactLisType: ContactListType = .main) {
-            self.contactLisType = contactLisType
-            super.init(nibName: nil, bundle: nil)
-        }
+        self.contactLisType = contactLisType
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -50,6 +53,15 @@ class ContactListView: UIViewController, ContactListViewProtocol {
         setUpView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.getData()
+    }
+    
+    func updateData(data: [ContactInfo]) {
+        self.data = data
+        tableView.reloadData()
+    }
+    
     private func setUpView() {
         setUpHeader()
         setUpSearchBar()
@@ -57,17 +69,16 @@ class ContactListView: UIViewController, ContactListViewProtocol {
     }
     
     private func setUpHeader() {
-        //TODO: add strings and assets
         switch contactLisType {
         case .main:
             header.setTitle(with: ContactListStrings.contacts)
-            header.setImage(with: "person.fill.badge.plus")
+            header.setImage(with: ContactListAsstesList.personContact)
         case.favorite:
             header.setTitle(with: ContactListStrings.favorite)
-            header.setImage(with: "star.fill")
+            header.setImage(with: ContactListAsstesList.starFill)
         case .addFavorite:
             header.setTitle(with: ContactListStrings.addFavorite)
-            header.setImage(with: "star")
+            header.setImage(with: ContactListAsstesList.star)
             
         }
         view.addSubview(header)
@@ -113,16 +124,22 @@ extension ContactListView: HeaderViewProtocol{
 
 extension ContactListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        data?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         var cell = UITableViewCell()
+        let index = indexPath.row
+        guard let currentItem = data?[index] else { return cell}
+        
         cell = tableView.dequeueReusableCell(withIdentifier: "ContactsListTableViewCell", for: indexPath)
+        
         if let cell = cell as? ContactsListTableViewCell {
-            cell.setupCell(name: "Emma \(indexPath.row)", number: "\(indexPath.row)", image: "", cellrow: indexPath.row)
+            cell.setupCell(name: currentItem.name, number: currentItem.number, image: nil, cellrow: indexPath.row)
             cell.delegate = self
         }
+        
         cell.selectionStyle = .none
         return cell
     }
@@ -132,7 +149,7 @@ extension ContactListView: ContactsListTableViewCellProtocol {
     func reloadCell() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, animations: {
             [weak self] in
-                self?.tableView.performBatchUpdates(nil)
+            self?.tableView.performBatchUpdates(nil)
         })
     }
     

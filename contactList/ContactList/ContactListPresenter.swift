@@ -12,7 +12,8 @@ protocol ContactListPresenterProtocol {
     var interactor: ContactListInteractorProtocol? {get set}
     var view: ContactListViewProtocol? {get set}
     
-    func interactorCosas()
+    func getData()
+    
 }
 
 class ContactListPresenter: ContactListPresenterProtocol{
@@ -22,6 +23,8 @@ class ContactListPresenter: ContactListPresenterProtocol{
     
     var view: ContactListViewProtocol?
     
-    func interactorCosas() {
+    func getData() {
+        guard let contactsData = interactor?.getData() else { return }
+        view?.updateData(data: contactsData)
     }
 }

@@ -12,7 +12,6 @@ class ContactIcon: UIView {
     lazy var circleView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemBlue
-        view.layer.cornerRadius = 25
         return view
     }()
     
@@ -42,5 +41,9 @@ class ContactIcon: UIView {
         
         self.addSubview(nameLabel)
         self.fillViewWith(nameLabel)
+    }
+    
+    func setCornerRadius(radius: CGFloat) {
+        circleView.layer.cornerRadius = radius
     }
 }

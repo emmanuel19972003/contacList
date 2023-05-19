@@ -57,11 +57,11 @@ extension TapBarRouter {
         
         tapBarController.setViewControllers([favoriteContactsViewController, contactsViewController], animated: false)
         
-        tapBarController.tabBar.items?[0].image = UIImage(systemName: TapBarStrings.starImage)
-        tapBarController.tabBar.items?[0].selectedImage = UIImage(systemName: TapBarStrings.starFillImage)
+        tapBarController.tabBar.items?[0].image = UIImage(systemName: TapBarAssets.starImage)
+        tapBarController.tabBar.items?[0].selectedImage = UIImage(systemName: TapBarAssets.starFillImage)
         
-        tapBarController.tabBar.items?[1].image = UIImage(systemName: TapBarStrings.contactsImage)
-        tapBarController.tabBar.items?[1].selectedImage = UIImage(systemName: TapBarStrings.contactsFillImage)
+        tapBarController.tabBar.items?[1].image = UIImage(systemName: TapBarAssets.contactsImage)
+        tapBarController.tabBar.items?[1].selectedImage = UIImage(systemName: TapBarAssets.contactsFillImage)
         
         tapBarController.modalPresentationStyle = .fullScreen
         view?.present(tapBarController, animated: false)
