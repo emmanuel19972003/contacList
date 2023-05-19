@@ -90,7 +90,7 @@ class ContactsListTableViewCell: UITableViewCell {
         nameLabel.text = name
         descriptionLabel.text = number
         self.cellrow = cellrow
-        setIncon(iamge: image)
+        setIncon(name: name, iamge: image)
     }
     
     @objc func tapGesture() {
@@ -106,12 +106,17 @@ class ContactsListTableViewCell: UITableViewCell {
     
     @objc func descriptionStackViewTaped() {
         delegate?.editContactTaped()
-    func setIncon(iamge: String?) {
+    }
         
-        if let image = iamge {
-            
+    func setIncon(name: String, iamge: String?) {
+        let initial = "E"
+        let icon = ContactIcon(name: initial)
+        viewHolder.fillViewWith(icon)
+        
+        if let _ = iamge {
+            return
         } else {
-            var icon = ContactIcon(name: self.na)
+            return
         }
     }
     

@@ -12,20 +12,22 @@ class ContactIcon: UIView {
     lazy var circleView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemBlue
-        view.layer.cornerRadius = circleView.bounds.width / 2
+        view.layer.cornerRadius = 25
         return view
     }()
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont(name:"HelveticaNeue-Bold", size: 18.0)
+        label.font = UIFont(name:"HelveticaNeue-Bold", size: 25.0)
         label.numberOfLines = 1
+        label.textAlignment = .center
         return label
     }()
     
     init(name: String) {
         super.init(frame: .zero)
+        nameLabel.text = name
         setupView()
     }
     
@@ -37,8 +39,8 @@ class ContactIcon: UIView {
         self.addSubview(circleView)
         self.fillViewWith(circleView)
         
+        
         self.addSubview(nameLabel)
         self.fillViewWith(nameLabel)
-        
     }
 }

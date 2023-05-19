@@ -215,8 +215,8 @@
 			children = (
 				6733ACC32A11BE3F00E74BE6 /* ContactListView.swift */,
 				6797839A2A14829F0048787A /* SearchBar.swift */,
-				679783A22A15BCB90048787A /* Cell */,
 				67CD1A252A171D420021DECB /* ContactIcon.swift */,
+				679783A22A15BCB90048787A /* Cell */,
 			);
 			path = view;
 			sourceTree = "<group>";
