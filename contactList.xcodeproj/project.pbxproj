@@ -30,6 +30,12 @@
 		67B771252A130EFB00296396 /* TapBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B771242A130EFB00296396 /* TapBarInteractor.swift */; };
 		67B771292A130F0F00296396 /* TapBarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B771282A130F0F00296396 /* TapBarEntity.swift */; };
 		67B7712B2A130F1600296396 /* TapBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B7712A2A130F1600296396 /* TapBarRouter.swift */; };
+		67CD1A1C2A1711540021DECB /* AddNewContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A1B2A1711540021DECB /* AddNewContactView.swift */; };
+		67CD1A1E2A17115C0021DECB /* AddNewContactInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A1D2A17115C0021DECB /* AddNewContactInteractor.swift */; };
+		67CD1A202A1711670021DECB /* AddNewContactPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A1F2A1711670021DECB /* AddNewContactPresenter.swift */; };
+		67CD1A222A1711720021DECB /* AddNewContactEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A212A1711720021DECB /* AddNewContactEntity.swift */; };
+		67CD1A242A1711770021DECB /* AddNewContactRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A232A1711770021DECB /* AddNewContactRouter.swift */; };
+		67CD1A262A171D420021DECB /* ContactIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A252A171D420021DECB /* ContactIcon.swift */; };
 		67ED56832A1317D0009C1A97 /* TapBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED56822A1317D0009C1A97 /* TapBarPresenter.swift */; };
 		73DDBB5A01D866CDD375267D /* Pods_contactListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94266A3696E52725DC4D7948 /* Pods_contactListTests.framework */; };
 		9F63A7D02A1503910077C1C0 /* UIViewExtencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63A7CF2A1503910077C1C0 /* UIViewExtencion.swift */; };
@@ -83,6 +89,12 @@
 		67B771242A130EFB00296396 /* TapBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarInteractor.swift; sourceTree = "<group>"; };
 		67B771282A130F0F00296396 /* TapBarEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarEntity.swift; sourceTree = "<group>"; };
 		67B7712A2A130F1600296396 /* TapBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarRouter.swift; sourceTree = "<group>"; };
+		67CD1A1B2A1711540021DECB /* AddNewContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContactView.swift; sourceTree = "<group>"; };
+		67CD1A1D2A17115C0021DECB /* AddNewContactInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContactInteractor.swift; sourceTree = "<group>"; };
+		67CD1A1F2A1711670021DECB /* AddNewContactPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContactPresenter.swift; sourceTree = "<group>"; };
+		67CD1A212A1711720021DECB /* AddNewContactEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContactEntity.swift; sourceTree = "<group>"; };
+		67CD1A232A1711770021DECB /* AddNewContactRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContactRouter.swift; sourceTree = "<group>"; };
+		67CD1A252A171D420021DECB /* ContactIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactIcon.swift; sourceTree = "<group>"; };
 		67ED56822A1317D0009C1A97 /* TapBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarPresenter.swift; sourceTree = "<group>"; };
 		6AB756B20168A48FA267D1BB /* Pods-contactListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contactListTests.release.xcconfig"; path = "Target Support Files/Pods-contactListTests/Pods-contactListTests.release.xcconfig"; sourceTree = "<group>"; };
 		94266A3696E52725DC4D7948 /* Pods_contactListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_contactListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,8 +175,9 @@
 				679783962A14781F0048787A /* UIComponents */,
 				67B771212A130EDD00296396 /* TapBar */,
 				6733ACB72A112D0600E74BE6 /* ContactList */,
-				67897AD62A111ECD0085769A /* AppDelegate.swift */,
+				67CD1A1A2A1711310021DECB /* AddNewContact */,
 				67897AD82A111ECD0085769A /* SceneDelegate.swift */,
+				67897AD62A111ECD0085769A /* AppDelegate.swift */,
 				67897ADF2A111ECD0085769A /* Assets.xcassets */,
 				67897AE12A111ECD0085769A /* LaunchScreen.storyboard */,
 				67897AE42A111ECD0085769A /* Info.plist */,
@@ -203,6 +216,7 @@
 				6733ACC32A11BE3F00E74BE6 /* ContactListView.swift */,
 				6797839A2A14829F0048787A /* SearchBar.swift */,
 				679783A22A15BCB90048787A /* Cell */,
+				67CD1A252A171D420021DECB /* ContactIcon.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -227,6 +241,18 @@
 				6797839C2A15BB6E0048787A /* TapBarStrings.swift */,
 			);
 			path = TapBar;
+			sourceTree = "<group>";
+		};
+		67CD1A1A2A1711310021DECB /* AddNewContact */ = {
+			isa = PBXGroup;
+			children = (
+				67CD1A1B2A1711540021DECB /* AddNewContactView.swift */,
+				67CD1A1D2A17115C0021DECB /* AddNewContactInteractor.swift */,
+				67CD1A1F2A1711670021DECB /* AddNewContactPresenter.swift */,
+				67CD1A212A1711720021DECB /* AddNewContactEntity.swift */,
+				67CD1A232A1711770021DECB /* AddNewContactRouter.swift */,
+			);
+			path = AddNewContact;
 			sourceTree = "<group>";
 		};
 		800E95F91DA2F696538B311F /* Frameworks */ = {
@@ -481,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67CD1A222A1711720021DECB /* AddNewContactEntity.swift in Sources */,
 				67B771252A130EFB00296396 /* TapBarInteractor.swift in Sources */,
 				67B771232A130EED00296396 /* TapBarView.swift in Sources */,
 				6733ACCA2A11BE5F00E74BE6 /* ContactListEntity.swift in Sources */,
@@ -494,10 +521,15 @@
 				67897AD92A111ECD0085769A /* SceneDelegate.swift in Sources */,
 				6733ACC62A11BE4700E74BE6 /* ContactListInteractor.swift in Sources */,
 				6733ACC42A11BE3F00E74BE6 /* ContactListView.swift in Sources */,
+				67CD1A1C2A1711540021DECB /* AddNewContactView.swift in Sources */,
 				67ED56832A1317D0009C1A97 /* TapBarPresenter.swift in Sources */,
+				67CD1A242A1711770021DECB /* AddNewContactRouter.swift in Sources */,
+				67CD1A262A171D420021DECB /* ContactIcon.swift in Sources */,
 				6733ACC82A11BE5200E74BE6 /* ContactListPresenter.swift in Sources */,
 				6797839D2A15BB6F0048787A /* TapBarStrings.swift in Sources */,
 				679783A02A15BCB30048787A /* ContactsListTableViewCell.swift in Sources */,
+				67CD1A202A1711670021DECB /* AddNewContactPresenter.swift in Sources */,
+				67CD1A1E2A17115C0021DECB /* AddNewContactInteractor.swift in Sources */,
 				679783982A1478350048787A /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
