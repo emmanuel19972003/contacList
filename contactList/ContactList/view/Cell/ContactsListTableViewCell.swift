@@ -71,10 +71,11 @@ class ContactsListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setupCell (name: String, number: String, image: String, cellrow: Int){
+    func setupCell (name: String, number: String, image: String?, cellrow: Int){
         nameLabel.text = name
         descriptionLabel.text = number
         self.cellrow = cellrow
+        setIncon(iamge: image)
     }
     
     @objc func tapGesture() {
@@ -85,6 +86,15 @@ class ContactsListTableViewCell: UITableViewCell {
         arrowImage.rotateWithAnimation(descriptionStackView.isHidden)
         delegate?.reloadCell(index: cellrow)
         
+    }
+    
+    func setIncon(iamge: String?) {
+        
+        if let image = iamge {
+            
+        } else {
+            var icon = ContactIcon(name: self.na)
+        }
     }
     
 }

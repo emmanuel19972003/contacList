@@ -122,8 +122,6 @@ extension ContactListView: UITableViewDelegate, UITableViewDataSource {
             cell.delegate = self
         }
         cell.selectionStyle = .none
-//        cell.layoutIfNeeded()
-//        cell.updateConstraintsIfNeeded()
         return cell
     }
 }
