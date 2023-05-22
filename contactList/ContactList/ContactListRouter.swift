@@ -9,9 +9,15 @@ import UIKit
 
 protocol ContactListRouterProtocol {
     func getContactList(type: ContactListType) -> UIViewController
+    
+    func getAddEdditViewController()
+    func goToAddFavoriteContact()
+    var view: UIViewController? { get set }
 }
-//vip
+
 class ContactListRouter: ContactListRouterProtocol {
+    
+    var view: UIViewController?
     
     func getContactList(type: ContactListType) -> UIViewController {
         
@@ -26,7 +32,19 @@ class ContactListRouter: ContactListRouterProtocol {
         presenter.view  = view
         presenter.interactor = interactor
         presenter.router = router
+        router.view = view
         
         return view
+    }
+    
+    func getAddEdditViewController() {
+        let viewController = AddNewContactRouter().getNewContact()
+        view?.navigationController?.pushViewController(viewController, animated: true)
+        
+    }
+    
+    func goToAddFavoriteContact() {
+        let viewController = AddNewContactRouter().getNewContact()
+        view?.present(viewController, animated: true)
     }
 }

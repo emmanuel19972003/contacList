@@ -55,6 +55,11 @@ class ContactListView: UIViewController, ContactListViewProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         presenter?.getData()
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func updateData(data: [ContactInfo]) {
@@ -116,9 +121,16 @@ class ContactListView: UIViewController, ContactListViewProtocol {
     
 }
 
-extension ContactListView: HeaderViewProtocol{
+extension ContactListView: HeaderViewProtocol {
     func imageTapped() {
-        print("Emma")
+        switch contactLisType {
+        case .main:
+            presenter?.goToAddEditContact()
+        case .favorite:
+            presenter?.goToAddFavoriteContact()
+        case .addFavorite:
+            return
+        }
     }
 }
 

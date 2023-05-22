@@ -34,22 +34,26 @@ class HeaderView: UIView {
     
     init(title: String? = nil, iconImage: String? = nil) {
         super.init(frame: .zero)
-        setupView()
+        setupView(title: title, iconImage: iconImage)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setTitle(with title: String) {
+    func setTitle(with title: String?) {
+        guard let title = title else { return }
         titleLabel.text = title
     }
     
-    func setImage(with image: String) {
+    func setImage(with image: String?) {
+        guard let image = image else { return }
         iconImageView.image = UIImage(systemName: image)
     }
     
-    private func setupView(){
+    private func setupView(title: String? = nil, iconImage: String? = nil){
+        setTitle(with: title)
+        setImage(with: iconImage)
         setUpTitleLabel()
         setUpIconImageView()
     }

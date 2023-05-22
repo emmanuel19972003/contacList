@@ -17,27 +17,9 @@ class TapBarView: UIViewController, TapBarViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
     }
     
     override func viewDidAppear(_ animated: Bool) {
         presenter?.setUpTapBar()
-    }
-    
-    @objc func goToThreePress() {
-    }
-}
-
-class ejemplo: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .cyan
-    }
-}
-
-class ejemplo2: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .red
     }
 }

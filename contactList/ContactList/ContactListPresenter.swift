@@ -13,6 +13,8 @@ protocol ContactListPresenterProtocol {
     var view: ContactListViewProtocol? {get set}
     
     func getData()
+    func goToAddEditContact()
+    func goToAddFavoriteContact()
     
 }
 
@@ -26,5 +28,13 @@ class ContactListPresenter: ContactListPresenterProtocol{
     func getData() {
         guard let contactsData = interactor?.getData() else { return }
         view?.updateData(data: contactsData)
+    }
+    
+    func goToAddEditContact() {
+        router?.getAddEdditViewController()
+    }
+    
+    func goToAddFavoriteContact() {
+        router?.goToAddFavoriteContact()
     }
 }

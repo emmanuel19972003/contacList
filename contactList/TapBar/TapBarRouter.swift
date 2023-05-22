@@ -35,7 +35,7 @@ class TapBarRouter: TapBarRouterProtocol {
         presenter.interactor = interactor
         presenter.router = router
         
-        router.entry = view as? EnetryPoint
+        router.entry = view as EnetryPoint
         router.view = view
         
         return router
@@ -52,10 +52,10 @@ extension TapBarRouter {
         favoriteContactsViewController.title = TapBarStrings.favorite
         
         let contactsViewController = ContactListRouter().getContactList(type: .main)
-        contactsViewController.title = TapBarStrings.contacts
-    
+        let contactNavigationController = UINavigationController(rootViewController: contactsViewController)
+        contactNavigationController.title = TapBarStrings.contacts
         
-        tapBarController.setViewControllers([favoriteContactsViewController, contactsViewController], animated: false)
+        tapBarController.setViewControllers([favoriteContactsViewController, contactNavigationController], animated: false)
         
         tapBarController.tabBar.items?[0].image = UIImage(systemName: TapBarAssets.starImage)
         tapBarController.tabBar.items?[0].selectedImage = UIImage(systemName: TapBarAssets.starFillImage)
