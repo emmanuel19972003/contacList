@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/emmanuelzambranoquitian/Desktop/Clases Xcode/contactList/contactList/MemoryManager/ContactInfoEntity+CoreDataClass.swift">
+      location = "group:ContactInfoEntity+CoreDataClass.swift">
    </FileRef>
    <FileRef
-      location = "group:/Users/emmanuelzambranoquitian/Desktop/Clases Xcode/contactList/contactList/MemoryManager/ContactInfoEntity+CoreDataProperties.swift">
+      location = "group:ContactInfoEntity+CoreDataProperties.swift">
    </FileRef>
    <FileRef
       location = "group:contactList.xcodeproj">

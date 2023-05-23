@@ -42,10 +42,10 @@
 		67CD1A552A1BD5E50021DECB /* AddNewContactAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A542A1BD5E50021DECB /* AddNewContactAssets.swift */; };
 		67CD1A582A1C5ACE0021DECB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A562A1C5ACE0021DECB /* Model.xcdatamodeld */; };
 		67CD1A5B2A1C5C8E0021DECB /* MemoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A5A2A1C5C8E0021DECB /* MemoryManager.swift */; };
-		67CD1A622A1C609D0021DECB /* ContactInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A602A1C609D0021DECB /* ContactInfoEntity+CoreDataClass.swift */; };
-		67CD1A632A1C609D0021DECB /* ContactInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CD1A612A1C609D0021DECB /* ContactInfoEntity+CoreDataProperties.swift */; };
 		67ED56832A1317D0009C1A97 /* TapBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED56822A1317D0009C1A97 /* TapBarPresenter.swift */; };
 		73DDBB5A01D866CDD375267D /* Pods_contactListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94266A3696E52725DC4D7948 /* Pods_contactListTests.framework */; };
+		9F405EDE2A1CE7D500E6C10D /* ContactInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F405EDC2A1CE7D500E6C10D /* ContactInfoEntity+CoreDataProperties.swift */; };
+		9F405EDF2A1CE7D500E6C10D /* ContactInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F405EDD2A1CE7D500E6C10D /* ContactInfoEntity+CoreDataClass.swift */; };
 		9F63A7D02A1503910077C1C0 /* UIViewExtencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63A7CF2A1503910077C1C0 /* UIViewExtencion.swift */; };
 		9F63A7D22A1508A70077C1C0 /* ContactListStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63A7D12A1508A70077C1C0 /* ContactListStrings.swift */; };
 		9F8ABD952A17D15600A8FD85 /* ContactListAsstesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ABD942A17D15600A8FD85 /* ContactListAsstesList.swift */; };
@@ -111,11 +111,11 @@
 		67CD1A542A1BD5E50021DECB /* AddNewContactAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContactAssets.swift; sourceTree = "<group>"; };
 		67CD1A572A1C5ACE0021DECB /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		67CD1A5A2A1C5C8E0021DECB /* MemoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryManager.swift; sourceTree = "<group>"; };
-		67CD1A602A1C609D0021DECB /* ContactInfoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ContactInfoEntity+CoreDataClass.swift"; path = "/Users/emmanuelzambranoquitian/Desktop/Clases Xcode/contactList/contactList/MemoryManager/ContactInfoEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		67CD1A612A1C609D0021DECB /* ContactInfoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ContactInfoEntity+CoreDataProperties.swift"; path = "/Users/emmanuelzambranoquitian/Desktop/Clases Xcode/contactList/contactList/MemoryManager/ContactInfoEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		67ED56822A1317D0009C1A97 /* TapBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarPresenter.swift; sourceTree = "<group>"; };
 		6AB756B20168A48FA267D1BB /* Pods-contactListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contactListTests.release.xcconfig"; path = "Target Support Files/Pods-contactListTests/Pods-contactListTests.release.xcconfig"; sourceTree = "<group>"; };
 		94266A3696E52725DC4D7948 /* Pods_contactListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_contactListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F405EDC2A1CE7D500E6C10D /* ContactInfoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ContactInfoEntity+CoreDataProperties.swift"; path = "../../ContactInfoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9F405EDD2A1CE7D500E6C10D /* ContactInfoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ContactInfoEntity+CoreDataClass.swift"; path = "../../ContactInfoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9F63A7CF2A1503910077C1C0 /* UIViewExtencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtencion.swift; sourceTree = "<group>"; };
 		9F63A7D12A1508A70077C1C0 /* ContactListStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListStrings.swift; sourceTree = "<group>"; };
 		9F8ABD942A17D15600A8FD85 /* ContactListAsstesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListAsstesList.swift; sourceTree = "<group>"; };
@@ -295,8 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				67CD1A5A2A1C5C8E0021DECB /* MemoryManager.swift */,
-				67CD1A602A1C609D0021DECB /* ContactInfoEntity+CoreDataClass.swift */,
-				67CD1A612A1C609D0021DECB /* ContactInfoEntity+CoreDataProperties.swift */,
+				9F405EDD2A1CE7D500E6C10D /* ContactInfoEntity+CoreDataClass.swift */,
+				9F405EDC2A1CE7D500E6C10D /* ContactInfoEntity+CoreDataProperties.swift */,
 			);
 			path = MemoryManager;
 			sourceTree = "<group>";
@@ -575,18 +575,18 @@
 				67CD1A1C2A1711540021DECB /* AddNewContactView.swift in Sources */,
 				9F8ABD972A17D24D00A8FD85 /* TapBarAssets.swift in Sources */,
 				67ED56832A1317D0009C1A97 /* TapBarPresenter.swift in Sources */,
+				9F405EDE2A1CE7D500E6C10D /* ContactInfoEntity+CoreDataProperties.swift in Sources */,
 				67CD1A242A1711770021DECB /* AddNewContactRouter.swift in Sources */,
 				67CD1A352A1AFF320021DECB /* ActionTabView.swift in Sources */,
 				67CD1A262A171D420021DECB /* ContactIcon.swift in Sources */,
 				6733ACC82A11BE5200E74BE6 /* ContactListPresenter.swift in Sources */,
-				67CD1A622A1C609D0021DECB /* ContactInfoEntity+CoreDataClass.swift in Sources */,
 				6797839D2A15BB6F0048787A /* TapBarStrings.swift in Sources */,
 				679783A02A15BCB30048787A /* ContactsListTableViewCell.swift in Sources */,
 				67CD1A202A1711670021DECB /* AddNewContactPresenter.swift in Sources */,
-				67CD1A632A1C609D0021DECB /* ContactInfoEntity+CoreDataProperties.swift in Sources */,
 				67CD1A5B2A1C5C8E0021DECB /* MemoryManager.swift in Sources */,
 				67CD1A1E2A17115C0021DECB /* AddNewContactInteractor.swift in Sources */,
 				679783982A1478350048787A /* HeaderView.swift in Sources */,
+				9F405EDF2A1CE7D500E6C10D /* ContactInfoEntity+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

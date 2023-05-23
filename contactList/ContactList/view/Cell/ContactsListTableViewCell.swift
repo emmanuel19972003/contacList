@@ -109,9 +109,7 @@ class ContactsListTableViewCell: UITableViewCell {
     }
         
     func setIncon(name: String, iamge: String?) {
-        
-        let initial = Array(name)[0]
-        let icon = ContactIcon(name: String(initial))
+        let icon = ContactIcon(name: name)
         viewHolder.fillViewWith(icon)
         icon.setCornerRadius(radius: viewHolder.layer.bounds.width / 2)
         

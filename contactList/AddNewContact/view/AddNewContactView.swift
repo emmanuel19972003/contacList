@@ -25,6 +25,7 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
     lazy private var header = HeaderView(title: AddNewContactStrings.title, iconImage: AddNewContactAssets.editIcon)
     
     lazy private var iconHoderView: UIView = UIView ()
+    lazy private var icon = ContactIcon(name: String())
     
     lazy private var nameLablel: UITextField = {
         let text = UITextField()
@@ -35,9 +36,32 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
         return text
     }()
     
+    lazy private var saveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Save", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 10
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(saveTapped))
+        button.addGestureRecognizer(tapGesture)
+        return button
+    }()
+    
+    lazy private var deleteButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Delete", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.red.cgColor
+        button.layer.cornerRadius = 10
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(deletTapped))
+        button.addGestureRecognizer(tapGesture)
+        return button
+    }()
+    
     lazy private var actionTabView = ActionTabView(buttonOneImage: AddNewContactAssets.messegesIcon, buttonOneLabel: AddNewContactStrings.messeges,
-                                                           buttonTwoImage: AddNewContactAssets.phoneIcon, buttonTwoLabel: AddNewContactStrings.call,
-                                                           buttonThreeImage: AddNewContactAssets.phoneHistoirIcon, buttonThreeLabel: AddNewContactStrings.history)
+                                                   buttonTwoImage: AddNewContactAssets.phoneIcon, buttonTwoLabel: AddNewContactStrings.call,
+                                                   buttonThreeImage: AddNewContactAssets.phoneHistoirIcon, buttonThreeLabel: AddNewContactStrings.history)
     
     lazy private var numberEditText: UITextField = {
         let textField = UITextField()
@@ -63,9 +87,12 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
     init (data: ContactInfo? = nil) {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .systemGray6
-        iconHoderView.backgroundColor = .black//Borrar
         setUpView()
         setValues(data: data)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        icon.setCornerRadius(radius: iconHoderView.layer.bounds.width / 2)
     }
     
     required init?(coder: NSCoder) {
@@ -81,9 +108,12 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
         numberEditText.text = data.number
         nameLablel.text = data.name
         addresEditText.text = data.direcction
-        if let image = data.image {
-            //TODO: OPEN IMAGE
-        }
+        
+        
+        icon = ContactIcon(name: data.name)
+        icon.setCornerRadius(radius: 50)
+        iconHoderView.fillViewWith(icon)
+        
     }
     
     func setUpView() {
@@ -95,6 +125,8 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
         setUpActionTabView()
         setUpNumberEditText()
         setUpaddresEditText()
+        setUpSaveButton()
+        setUpDeleteButton()
     }
     
     func setUpheader() {
@@ -118,6 +150,7 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
             iconHoderView.heightAnchor.constraint(equalToConstant: 100),
             iconHoderView.widthAnchor.constraint(equalToConstant: 100)
         ])
+        iconHoderView.fillViewWith(icon)
     }
     
     func setUpNameLablel() {
@@ -164,8 +197,37 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
         ])
     }
     
+    func setUpSaveButton() {
+        view.addSubview(saveButton)
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            saveButton.topAnchor.constraint(equalTo: addresEditText.bottomAnchor, constant: spacingConstants.vertical),
+            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            saveButton.heightAnchor.constraint(equalToConstant: 35)
+        ])
+    }
+    
+    func setUpDeleteButton() {
+        view.addSubview(deleteButton)
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            deleteButton.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: spacingConstants.vertical),
+            deleteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            deleteButton.heightAnchor.constraint(equalToConstant: 35)
+        ])
+    }
+    
     @objc func viewTapped() {
         self.view.endEditing(true)
+    }
+    
+    @objc func saveTapped() {
+        print("save")
+    }
+    @objc func deletTapped() {
+        print("delet")
     }
     
     func setEnable() {
@@ -177,6 +239,7 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
         numberEditText.backgroundColor = edditTextColor
         addresEditText.backgroundColor = edditTextColor
         nameLablel.backgroundColor = edditTextColor
+        deleteButton.isHidden = true
     }
 }
 

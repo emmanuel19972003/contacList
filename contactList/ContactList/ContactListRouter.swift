@@ -13,6 +13,7 @@ protocol ContactListRouterProtocol {
     func getAddEdditViewController()
     func goToAddFavoriteContact()
     func gotEditContact(contacData: ContactInfo)
+    func dismisAddFavoriteContact()
     var view: UIViewController? { get set }
 }
 
@@ -52,5 +53,9 @@ class ContactListRouter: ContactListRouterProtocol {
     func gotEditContact(contacData: ContactInfo) {
         let viewController = AddNewContactRouter().getNewContact(data: contacData)
         view?.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func dismisAddFavoriteContact() {
+        view?.presentingViewController?.dismiss(animated: true, completion:nil)
     }
 }

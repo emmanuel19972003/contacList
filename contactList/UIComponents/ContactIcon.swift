@@ -25,8 +25,9 @@ class ContactIcon: UIView {
     }()
     
     init(name: String) {
+        let initial = name.count > 0 ? String(Array(name)[0]) : ""
         super.init(frame: .zero)
-        nameLabel.text = name
+        nameLabel.text = initial
         setupView()
     }
     

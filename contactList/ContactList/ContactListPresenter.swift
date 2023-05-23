@@ -48,8 +48,11 @@ class ContactListPresenter: ContactListPresenterProtocol{
     func ContactMorePress(contacData: ContactInfo, contactLisType: ContactListType) {
         switch contactLisType {
         case .main:
+            
             gotEditContact(contacData: contacData)
+            
         case .favorite:
+            
             let alert = UIAlertController(title: ContactListStrings.notFavorite, message: ContactListStrings.notFavotireConformation, preferredStyle: .alert)
             let acceptAction = UIAlertAction(title: ContactListStrings.accept, style: .default) {_ in
                 self.view?.notFavorite(contactInfo: contacData)
@@ -61,7 +64,15 @@ class ContactListPresenter: ContactListPresenterProtocol{
             view?.showAlert(alert: alert)
             
         case .addFavorite:
-            print("router self in mode ")
+            
+            let alert = UIAlertController(title: ContactListStrings.favoriteTitle, message: ContactListStrings.favotireConformation, preferredStyle: .alert)
+            let acceptAction = UIAlertAction(title: ContactListStrings.accept, style: .default) {_ in
+                self.view?.notFavorite(contactInfo: contacData)
+                self.router?.dismisAddFavoriteContact()
+            }
+
+            alert.addAction(acceptAction)
+            view?.showAlert(alert: alert)
         }
     }
 }
