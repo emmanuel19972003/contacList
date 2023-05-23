@@ -11,6 +11,8 @@ protocol ContactListViewProtocol {
     var presenter: ContactListPresenterProtocol? {get set}
     
     func updateData(data: [ContactInfo])
+    func showAlert(alert: UIAlertController)
+    func notFavorite(contactInfo: ContactInfo)
 }
 
 class ContactListView: UIViewController, ContactListViewProtocol {
@@ -65,6 +67,15 @@ class ContactListView: UIViewController, ContactListViewProtocol {
     func updateData(data: [ContactInfo]) {
         self.data = data
         tableView.reloadData()
+    }
+    
+    func showAlert(alert: UIAlertController) {
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func notFavorite(contactInfo: ContactInfo) {
+        let index = data?.firstIndex(where: {$0.number ==  contactInfo.number})
+        
     }
     
     private func setUpView() {
@@ -165,7 +176,10 @@ extension ContactListView: ContactsListTableViewCellProtocol {
         })
     }
     
-    func editContactTaped() {
-        print("nos vamos al eddit")
+    func editContactTaped(index: Int?) {
+        guard let index = index,
+              let contacData = data?[index] else { return }
+        
+        presenter?.ContactMorePress(contacData: contacData, contactLisType: contactLisType)
     }
 }

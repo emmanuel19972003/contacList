@@ -13,5 +13,6 @@ struct AddNewContactStrings {
     static let messeges = "Messeges"
     static let call = "Call"
     static let history = "History"
-    static let addres = "Addres"
+    static let addres = "  Addres"
+    static let name = "Name"
 }

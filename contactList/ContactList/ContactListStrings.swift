@@ -13,4 +13,8 @@ struct ContactListStrings {
     static let addFavorite = "Add Favorite"
     static let magnifyingglass = "magnifyingglass"
     static let search = "Search"
+    static let notFavorite = "Delete contact from favorites"
+    static let notFavotireConformation = "Are you sure you want to delete contact from favorites?"
+    static let accept = "Accept"
+    static let cancel = "Cancel"
 }

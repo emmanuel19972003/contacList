@@ -8,14 +8,14 @@
 import UIKit
 
 protocol AddNewContactRouterProtocol {
-    func getNewContact() -> UIViewController
+    func getNewContact(data: ContactInfo? ) -> UIViewController
 }
 
 class AddNewContactRouter: AddNewContactRouterProtocol {
-    func getNewContact() -> UIViewController {
+    func getNewContact(data: ContactInfo? = nil) -> UIViewController {
         let router = AddNewContactRouter()
         
-        let view = AddNewContactView()
+        let view = AddNewContactView(data: data)
         let interactor = AddNewContactInteractor()
         let presenter = AddNewContactPresenter()
         

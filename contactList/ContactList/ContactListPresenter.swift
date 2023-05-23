@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ContactListPresenterProtocol {
     var router: ContactListRouterProtocol? {get set}
@@ -15,6 +16,8 @@ protocol ContactListPresenterProtocol {
     func getData()
     func goToAddEditContact()
     func goToAddFavoriteContact()
+    func gotEditContact(contacData: ContactInfo)
+    func ContactMorePress(contacData: ContactInfo, contactLisType: ContactListType)
     
 }
 
@@ -36,5 +39,29 @@ class ContactListPresenter: ContactListPresenterProtocol{
     
     func goToAddFavoriteContact() {
         router?.goToAddFavoriteContact()
+    }
+    
+    func gotEditContact(contacData: ContactInfo) {
+        router?.gotEditContact(contacData: contacData)
+    }
+    
+    func ContactMorePress(contacData: ContactInfo, contactLisType: ContactListType) {
+        switch contactLisType {
+        case .main:
+            gotEditContact(contacData: contacData)
+        case .favorite:
+            let alert = UIAlertController(title: ContactListStrings.notFavorite, message: ContactListStrings.notFavotireConformation, preferredStyle: .alert)
+            let acceptAction = UIAlertAction(title: ContactListStrings.accept, style: .default) {_ in
+                self.view?.notFavorite(contactInfo: contacData)
+            }
+            let cancel = UIAlertAction(title: ContactListStrings.cancel, style: .destructive)
+
+            alert.addAction(acceptAction)
+            alert.addAction(cancel)
+            view?.showAlert(alert: alert)
+            
+        case .addFavorite:
+            print("router self in mode ")
+        }
     }
 }

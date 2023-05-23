@@ -20,16 +20,19 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
     
     var presenter: AddNewContactPresenterProtocol?
     
+    var contacData: ContactInfo?
+    
     lazy private var header = HeaderView(title: AddNewContactStrings.title, iconImage: AddNewContactAssets.editIcon)
     
     lazy private var iconHoderView: UIView = UIView ()
     
-    lazy private var nameLablel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name:"HelveticaNeue-Bold", size: 32.0)
-        label.textAlignment = .center
-        label.text = "Emma "
-        return label
+    lazy private var nameLablel: UITextField = {
+        let text = UITextField()
+        text.font = UIFont(name:"HelveticaNeue-Bold", size: 32.0)
+        text.textAlignment = .center
+        text.layer.cornerRadius = 5
+        text.isEnabled = false
+        return text
     }()
     
     lazy private var actionTabView = ActionTabView(buttonOneImage: AddNewContactAssets.messegesIcon, buttonOneLabel: AddNewContactStrings.messeges,
@@ -43,6 +46,7 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
         textField.layer.cornerRadius = 5
         textField.backgroundColor = .systemGray4
         textField.isEnabled = false
+        textField.keyboardType = .numberPad
         return textField
     }()
     
@@ -61,18 +65,36 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
         view.backgroundColor = .systemGray6
         iconHoderView.backgroundColor = .black//Borrar
         setUpView()
+        setValues(data: data)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setValues(data: ContactInfo?) {
+        guard let data = data else {
+            setEnable()
+            return
+        }
+        contacData = data
+        numberEditText.text = data.number
+        nameLablel.text = data.name
+        addresEditText.text = data.direcction
+        if let image = data.image {
+            //TODO: OPEN IMAGE
+        }
+    }
+    
     func setUpView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        view.addGestureRecognizer(tapGesture)
         setUpheader()
         setUpIconHoderView()
         setUpNameLablel()
         setUpActionTabView()
         setUpNumberEditText()
+        setUpaddresEditText()
     }
     
     func setUpheader() {
@@ -130,28 +152,56 @@ class AddNewContactView: UIViewController ,AddNewContactViewProtocol {
             numberEditText.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
+    
+    func setUpaddresEditText() {
+        view.addSubview(addresEditText)
+        addresEditText.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            addresEditText.topAnchor.constraint(equalTo: numberEditText.bottomAnchor, constant: spacingConstants.vertical),
+            addresEditText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacingConstants.horizontal),
+            addresEditText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacingConstants.horizontal),
+            addresEditText.heightAnchor.constraint(equalToConstant: 35)
+        ])
+    }
+    
+    @objc func viewTapped() {
+        self.view.endEditing(true)
+    }
+    
+    func setEnable() {
+        numberEditText.isEnabled = true
+        addresEditText.isEnabled = true
+        nameLablel.isEnabled = true
+        nameLablel.text = AddNewContactStrings.name
+        let edditTextColor = numberEditText.isEnabled ? UIColor.white : UIColor.systemGray4
+        numberEditText.backgroundColor = edditTextColor
+        addresEditText.backgroundColor = edditTextColor
+        nameLablel.backgroundColor = edditTextColor
+    }
 }
 
 extension AddNewContactView: HeaderViewProtocol {
     func imageTapped() {
         numberEditText.isEnabled.toggle()
         addresEditText.isEnabled.toggle()
+        nameLablel.isEnabled.toggle()
         let headerIcon = numberEditText.isEnabled ? AddNewContactAssets.checkIcon : AddNewContactAssets.editIcon
         header.setImage(with: headerIcon)
         let edditTextColor = numberEditText.isEnabled ? UIColor.white : UIColor.systemGray4
         numberEditText.backgroundColor = edditTextColor
         addresEditText.backgroundColor = edditTextColor
+        nameLablel.backgroundColor = edditTextColor
         
     }
 }
 
 extension AddNewContactView: ActionTabViewProtocol {
     func buttonOnTapped() {
-        print("uno")
+        presenter?.goToImesseges(contacData: contacData)
     }
     
     func buttonTwoTapped() {
-        print("dos")
+        presenter?.goToPhone(contacData: contacData)
     }
     
     func buttonThreeTapped() {

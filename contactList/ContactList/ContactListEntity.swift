@@ -18,4 +18,5 @@ struct ContactInfo {
     var number: String
     var image: String? = ""
     var direcction: String? = ""
+    var isfavorite: Bool = false
 }

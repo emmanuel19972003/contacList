@@ -9,7 +9,7 @@ import UIKit
 
 protocol ContactsListTableViewCellProtocol {
     func reloadCell()
-    func editContactTaped()
+    func editContactTaped(index: Int?)
 }
 
 class ContactsListTableViewCell: UITableViewCell {
@@ -105,7 +105,7 @@ class ContactsListTableViewCell: UITableViewCell {
     }
     
     @objc func descriptionStackViewTaped() {
-        delegate?.editContactTaped()
+        delegate?.editContactTaped(index: cellrow)
     }
         
     func setIncon(name: String, iamge: String?) {
