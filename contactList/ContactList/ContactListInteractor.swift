@@ -18,7 +18,7 @@ class ContactListInteractor: ContactListInteractorProtocol {
     
     func getData() -> [ContactInfo] {
         return [ContactInfo(name: "Emma", number: "23432534"),
-                ContactInfo(name: "Ari", number: "302 3240145"),
+                ContactInfo(name: "Dane", number: "302 3240145"),
                 ContactInfo(name: "Juanis", number: "5345435"),
                 ContactInfo(name: "Patty", number: "36544")
                 
