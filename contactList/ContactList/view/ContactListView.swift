@@ -33,6 +33,7 @@ class ContactListView: UIViewController, ContactListViewProtocol {
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "ContactsListTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactsListTableViewCell")
+        tableView.register(DropDownCell.self, forCellReuseIdentifier: "DropDownCell")
         return tableView
     }()
     
@@ -74,7 +75,7 @@ class ContactListView: UIViewController, ContactListViewProtocol {
     }
     
     func notFavorite(contactInfo: ContactInfo) {
-        let index = data?.firstIndex(where: {$0.number ==  contactInfo.number})
+        _ = data?.firstIndex(where: {$0.number ==  contactInfo.number})
         
     }
     
@@ -156,12 +157,23 @@ extension ContactListView: UITableViewDelegate, UITableViewDataSource {
         let index = indexPath.row
         guard let currentItem = data?[index] else { return cell}
         
-        cell = tableView.dequeueReusableCell(withIdentifier: "ContactsListTableViewCell", for: indexPath)
-        
-        if let cell = cell as? ContactsListTableViewCell {
-            cell.setupCell(name: currentItem.name, number: currentItem.number, image: nil, cellrow: indexPath.row)
-            cell.delegate = self
+        if index % 2 == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "ContactsListTableViewCell", for: indexPath)
+            
+            if let cell = cell as? ContactsListTableViewCell {
+                cell.setupCell(name: currentItem.name, number: currentItem.number, image: nil, cellrow: indexPath.row)
+                cell.delegate = self
+            }
+        } else {
+            //nuevo
+            cell = tableView.dequeueReusableCell(withIdentifier: "DropDownCell", for: indexPath)
+            if let cell = cell as? DropDownCell {
+                cell.setUpCell(titleText: currentItem.name, bodyText: currentItem.number, refNumber: "2354353456", delegate: self)
+            }
+            //nuevo
+            
         }
+        
         
         cell.selectionStyle = .none
         return cell
@@ -181,5 +193,14 @@ extension ContactListView: ContactsListTableViewCellProtocol {
               let contacData = data?[index] else { return }
         
         presenter?.ContactMorePress(contacData: contacData, contactLisType: contactLisType)
+    }
+}
+
+extension ContactListView: DropDownCellProtocol {
+    func reloadTable() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, animations: {
+            [weak self] in
+            self?.tableView.performBatchUpdates(nil)
+        })
     }
 }
